@@ -15,7 +15,53 @@
         <%= content_tag :div, msg, class: "alert alert-#{type}" %>
       <% end %>
     </div>
-    
+
+    <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
+      <div class="container-fluid">
+        <%= link_to "Fakebook", "/", class: "navbar-brand ms-3"%>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <% if user_signed_in? %>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+            </ul>
+          <% else %>
+            <%= form_for(:user, url: session_path(:user), html: {class: "ms-auto"}) do |f| %>
+              <div class="row mb-1 g-2">
+                <div class="col-md-4">
+                  <%= f.label :email, class: "form-label mb-0" %>
+                  <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+                </div>
+                <div class="col-md-4">
+                  <%= f.label :password, class: "form-label mb-0" %>
+                  <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+                </div>
+                <div class="col-md-2 pt-4">
+                  <%= f.submit "Sign in", class: "btn btn-primary" %>
+                </div>
+                <div class="row mb-1">
+                  <div class="col-md-4">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                  </div>
+                  <div class="col-md-4">
+                    <%= link_to "Forgot password", new_user_password_path %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
