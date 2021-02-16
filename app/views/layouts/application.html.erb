@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -16,9 +18,9 @@
       <% end %>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-bg">
       <div class="container-fluid">
-        <%= link_to "Fakebook", "/", class: "navbar-brand ms-3"%>
+        <%= link_to "fakebook", "/", class: "navbar-brand ms-3"%>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,10 +51,10 @@
                 <div class="row mb-1">
                   <div class="col-md-4">
                   <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
+                  <%= f.label :remember_me, class: "navbar-under-sign-in" %>
                   </div>
                   <div class="col-md-4">
-                    <%= link_to "Forgot password", new_user_password_path %>
+                    <%= link_to "Forgot password", new_user_password_path, class: "navbar-under-sign-in" %>
                   </div>
                 </div>
               </div>

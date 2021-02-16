@@ -6,7 +6,7 @@
           I'm Sean, I built this site to practice and learn more web development.<br>
           You can view my other projects by following the links below.
       </h5>
-      <%= link_to "My github", "https://github.com/seanmr7" %> | <%= link_to "My personal blog", "http://www.sean-blog.com/" %>
+      <%= link_to "My github", "https://github.com/seanmr7" %> | <%= link_to "Personal blog", "http://www.sean-blog.com/" %>
       <% if user_signed_in? %>
         <%= link_to "sign out", destroy_user_session_path, method: :delete %>
       <% end %>
