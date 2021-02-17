@@ -13,12 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_02_16_070031) do
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
+    t.integer "sent_by_id", null: false
+    t.integer "sent_to_id", null: false
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
+    t.index ["sent_by_id"], name: "index_friendships_on_sent_by_id"
+    t.index ["sent_to_id"], name: "index_friendships_on_sent_to_id"
   end
 
   create_table "users", force: :cascade do |t|
