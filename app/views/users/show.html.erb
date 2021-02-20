@@ -5,10 +5,17 @@
       Profile picture<br>
       friends list<br>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 ps-5 pe-5">
       <h3>NEWS FEED</h3>
       <% if current_user.id == @user.id %>
-        <%= render partial: "posts/form", object: @post, as: :post %>
+        <%= render partial: "posts/form", object: @new_post, as: :post %>
+      <% end %>
+      <% @posts.each do |post| %>
+        <div class="card mb-3 ps-2 pe-2">
+          <p class="mt-1 mb-0 post-text"><b><%= post.user.first_name %> <%= post.user.last_name %></b></p>
+          <span class="post-date-text"><%= post.created_at.strftime("%D") %></span>
+          <p class=" mt-2 post-text"><%= post.content %></p>
+        </div>
       <% end %>
     </div>
     <div class="col-md-2">

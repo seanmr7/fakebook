@@ -6,8 +6,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = Post.order(created_at: :desc).where("user_id = ?", params[:id])
     if current_user.id == @user.id
-      @post = @user.posts.build
+      @new_post = @user.posts.build
     end
   end
 end
