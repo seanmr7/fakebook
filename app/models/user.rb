@@ -29,5 +29,8 @@ class User < ApplicationRecord
     ordered_posts = all_posts.sort_by { |post| post[:created_at] }.reverse
   end
 
+  def full_name
+    first_name + " " + last_name
+  end
 
 end

@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2 ps-5">
-      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+      <h3><%= @user.full_name %></h3>
       Profile picture<br>
       <% @friends.each do |friend| %><br>
-        <%= friend.first_name %>
+        <%= friend.full_name %>
       <% end %>
     </div>
     <div class="col-md-8 ps-5 pe-5">
@@ -14,24 +14,29 @@
       <% end %>
       <% @posts.each do |post| %>
         <div class="card mb-3 ps-2 pe-2">
-          <p class="mt-1 mb-0 post-text"><b><%= post.user.first_name %> <%= post.user.last_name %></b></p>
+          <p class="mt-1 mb-0 post-text"><b><%= post.user.full_name %></b></p>
           <span class="post-date-text"><%= post.created_at.strftime("%D") %></span>
           <p class=" mt-2 post-text"><%= post.content %></p>
-          <span class="pt-2 pb-2 mb-2 like-comment-wrapper">
+          <span class="post-text"><i class="fa fa-thumbs-o-up"> Likes: 10</i></span>
+          <span class="pt-2 pb-2 like-comment-wrapper">
             <div class="row m-0">
               <%= link_to "Like", '/', class: "col-md-6 rounded" %>
               <%= link_to 'Comment', new_comment_path(post_id: post.id, user_id: current_user.id), class: "col-md-6 rounded" %>
             </div>
           </span>
-          <% post.comments.each do |comment| %>
-            <%= comment.user.first_name %>
-            <%= comment.comment %>
-          <% end %>
+          <div class="comment-wrapper">
+            <% post.comments.each do |comment| %>
+              <div class="comment">
+                <b><%= comment.user.full_name %></b><br>
+                <%= comment.comment %>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
     <div class="col-md-2">
-      Ads
+      Notifications
     </div>
   </div>
 </div>
