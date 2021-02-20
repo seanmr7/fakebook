@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <%= params[:post_id].to_i %>
+
+  <%= form.hidden_field :post_id, value: params[:post_id].to_i %>
+  <%= form.hidden_field :user_id, value: params[:user_id].to_i %>
+  
   <div class="field">
     <%= form.label :comment %>
     <%= form.text_area :comment %>
