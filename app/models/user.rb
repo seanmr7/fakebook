@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :pending_requests, -> { merge(Friendship.not_friends) }, through: :friend_sent, source: :sent_to
   has_many :recieved_requests, -> { merge(Friendship.not_friends) }, through: :friend_request, source: :sent_by
 
-  # Returns an array of posts by the user and user's friends
+  # Returns an array of posts from most recent to oldest by the user and user's friends
   def friend_and_user_posts
     user_friends = friends
     all_posts = []
@@ -26,7 +26,7 @@ class User < ApplicationRecord
     posts.each do |post|
       all_posts << post
     end
-    all_posts
+    ordered_posts = all_posts.sort_by { |post| post[:created_at] }.reverse
   end
 
 

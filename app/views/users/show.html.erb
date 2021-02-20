@@ -17,6 +17,10 @@
           <p class="mt-1 mb-0 post-text"><b><%= post.user.first_name %> <%= post.user.last_name %></b></p>
           <span class="post-date-text"><%= post.created_at.strftime("%D") %></span>
           <p class=" mt-2 post-text"><%= post.content %></p>
+          <% post.comments.each do |comment| %>
+            <%= comment.user.first_name %>
+            <%= comment.comment %>
+          <% end %>
         </div>
       <% end %>
     </div>

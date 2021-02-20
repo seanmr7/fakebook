@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :posts
   devise_for :users
   root to: "pages#home"
   resources :users, only: %i[index show] do
@@ -12,4 +10,5 @@ Rails.application.routes.draw do
     end
   end
   resources :posts, except: [:show, :edit, :update]
+  resources :comments, except: [:show, :edit, :update, :index]
 end
