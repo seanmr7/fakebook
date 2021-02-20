@@ -10,20 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+  <%= params[:post_id].to_i %>
   <div class="field">
     <%= form.label :comment %>
     <%= form.text_area :comment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :post_id %>
-    <%= form.text_field :post_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
   </div>
 
   <div class="actions">
