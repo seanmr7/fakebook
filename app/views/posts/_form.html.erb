@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="field mb-3">
+    <%= form.text_area :content, placeholder: "What's on your mind?", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Post", class: "btn btn-primary" %>
   </div>
 <% end %>
