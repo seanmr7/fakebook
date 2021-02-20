@@ -62,6 +62,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use Guard gem to continuously run integration tests and unit tests
   gem 'guard'
+  # Use Hirb for activerecord table format
+  gem 'hirb'
 end
 
 group :test do
