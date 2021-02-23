@@ -16,8 +16,7 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def find_user_from_friendship(friendship)
-    user_id = friendship.sent_by_id
-    user = User.find(user_id)
+  def find_friendship_from_friend_request(request)
+    friendship = Friendship.where("sent_by_id = ? AND sent_to_id = ?", request.id, current_user.id)
   end
 end
