@@ -36,7 +36,18 @@
       <% end %>
     </div>
     <div class="col-md-2">
-      Notifications
+      <h3>Notifications</h3>
+      <h5>Friend Request</h5>
+        <% @user.recieved_requests.each do |request| %>
+          <%= request.inspect %>
+          <%= find_user_from_friendship(request).full_name %>
+          <%= link_to accept_friend_user_friendships_path(user_id: request.sent_by_id) do %>
+            <%= button_tag 'Accept', type: 'button', class: 'btn btn-success' %>
+          <% end %>
+          <%= link_to decline_friend_user_friendships_path(user_id: request.sent_by_id) do %>
+            <%= button_tag 'Decline', type: 'button', class: 'btn btn-danger' %>
+          <% end %>
+        <% end %>
     </div>
   </div>
 </div>
