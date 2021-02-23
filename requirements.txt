@@ -3,12 +3,12 @@ Done on Production > Use PostgreSQL for your database from the beginning (not SQ
 Done > User sign-in should use the Devise gem. Devise gives you all sorts of helpful methods so you no longer 
   have to write your own user passwords, sessions, and #current_user methods. See the Railscast 
   (which uses Rails 3) for a step-by-step introduction. The docs will be fully current.
-> Users can send Friend Requests to other Users.
-> A User must accept the Friend Request to become friends.
+Done > Users can send Friend Requests to other Users.
+Done > A User must accept the Friend Request to become friends.
 > The Friend Request shows up in the notifications section of a User’s navbar.
 Done > Users can create Posts (text only to start).
 > Users can Like Posts.
-> Users can Comment on Posts.
+Done > Users can Comment on Posts.
 > Posts should always display with the post content, author, comments and likes.
 > Treat the Posts Index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
 > Users can create a Profile with a Photo.
