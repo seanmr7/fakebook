@@ -3,7 +3,7 @@
     <div class="col-md-2 ps-5">
       <h3><%= @user.full_name %></h3>
       Profile picture<br>
-      <% unless current_user.id == params[:id].to_i %>
+      <% unless current_user.id == @user.id || is_friend?(@user.id) %>
         <%= link_to "Add Friend", user_friendships_path(user_id: @user.id), method: :post%>
       <% end %>
       <% @friends.each do |friend| %><br>
@@ -39,8 +39,9 @@
       <% end %>
     </div>
     <div class="col-md-2">
-      <h3>Notifications</h3>
-      <h5>Friend Requests</h5>
+      <% if current_user == @user %>
+        <h3>Notifications</h3>
+        <h5>Friend Requests</h5>
         <% @user.recieved_requests.each do |request| %>
           <%= request.full_name %>
           <%= link_to accept_friend_user_friendships_path(user_id: request) do %>
@@ -50,6 +51,7 @@
             <%= button_tag 'Decline', type: 'button', class: 'btn btn-danger' %>
           <% end %>
         <% end %>
+      <% end %>
     </div>
   </div>
 </div>

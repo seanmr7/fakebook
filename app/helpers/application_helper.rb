@@ -19,4 +19,8 @@ module ApplicationHelper
   def find_friendship_from_friend_request(request)
     friendship = Friendship.where("sent_by_id = ? AND sent_to_id = ?", request.id, current_user.id)
   end
+
+  def is_friend?(user_id)
+    return true if Friendship.where("sent_by_id = ? AND sent_to_id = ?", current_user.id, user_id).present?
+  end
 end
