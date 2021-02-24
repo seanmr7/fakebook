@@ -43,13 +43,9 @@
         <h3>Notifications</h3>
         <h5>Friend Requests</h5>
         <% @user.recieved_requests.each do |request| %>
-          <%= request.full_name %>
-          <%= link_to accept_friend_user_friendships_path(user_id: request) do %>
-            <%= button_tag 'Accept', type: 'button', class: 'btn btn-success' %>
-          <% end %>
-          <%= link_to decline_friend_user_friendships_path(user_id: request) do %>
-            <%= button_tag 'Decline', type: 'button', class: 'btn btn-danger' %>
-          <% end %>
+          <span><%= request.full_name %></span>
+          <%= link_to 'Accept', accept_friend_user_friendships_path(user_id: request), class: 'btn btn-success' %>
+          <%= link_to 'Decline', decline_friend_user_friendships_path(user_id: request), class: 'btn btn-danger' %>
         <% end %>
       <% end %>
     </div>

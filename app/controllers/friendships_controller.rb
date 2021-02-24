@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:failure] = "Friend request failed!"
     end
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def accept_friend
@@ -24,7 +24,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:danger] = "Friend request not accepted!"
     end
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def decline_friend
@@ -33,14 +33,14 @@ class FriendshipsController < ApplicationController
 
     @friendship.destroy
     flash[:succss] = "Friend request rejected!"
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def delete
     @friendship = Friendship.find_by(sent_to_id: params[:user_id], sent_by_id: current_user.id, status: true)
     if @friendship.destroy
       flash[:success] = "Friend destroyed!"
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     end
   end
 end

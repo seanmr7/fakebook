@@ -9,19 +9,15 @@
         <% next if user == current_user %>
 
         <div class="d-flex flex-row align-items-center card mb-4 pt-3 pb-3 ps-2 ">
-          <%= image_tag("default/default-profile-png", size: "50x50", class: "rounded-circle")%>
+          <%= image_tag("default/default-profile.png", size: "75x75", class: "rounded-circle me-3 ms-3")%>
           <h5 class="w-75"><%= user.full_name %></h5>
           <% if is_friend?(user.id) %>
             Your Friend
           <% elsif current_user.pending_requests.where("sent_to_id = ?", user.id).exists? %>
-            Pending Friend
+            <span class="btn btn-secondary">Pending Friend</span>
           <% elsif waiting_for_response(user) %>
-            <%= link_to accept_friend_user_friendships_path(user_id: request) do %>
-              <%= button_tag 'Accept', type: 'button', class: 'btn btn-success' %>
-            <% end %>
-            <%= link_to decline_friend_user_friendships_path(user_id: request) do %>
-              <%= button_tag 'Decline', type: 'button', class: 'btn btn-danger' %>
-            <% end %>
+            <%= link_to 'Accept', accept_friend_user_friendships_path(user_id: user.id), class: 'btn btn-success m-1' %>
+            <%= link_to 'Decline', decline_friend_user_friendships_path(user_id: user.id), class: 'btn btn-danger' %>
           <% else %>
             <%= link_to user_friendships_path(user_id: user.id), method: :post do %>
               <%= button_tag 'Add Friend', type: 'button', class: 'btn btn-primary' %>
