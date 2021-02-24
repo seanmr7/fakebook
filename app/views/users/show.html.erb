@@ -4,7 +4,7 @@
       <h3><%= @user.full_name %></h3>
       Profile picture<br>
       <% unless current_user.id == @user.id || is_friend?(@user.id) %>
-        <%= link_to "Add Friend", user_friendships_path(user_id: @user.id), method: :post%>
+        <%= link_to "Add Friend", user_friendships_path(user_id: @user.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
       <% @friends.each do |friend| %><br>
         <%= friend.full_name %>
