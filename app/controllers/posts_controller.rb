@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @posts = @user.friend_and_user_posts
-    @new_post = @user.posts.build
+    @post = Post.new
   end
 
   # GET /posts/new
