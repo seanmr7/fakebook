@@ -20,7 +20,19 @@ module ApplicationHelper
     friendship = Friendship.where("sent_by_id = ? AND sent_to_id = ?", request.id, current_user.id)
   end
 
+  def find_friendship(user)
+    friendship = Friendship.find_by(sent_to_id: user.id, sent_by_id: current_user.id, status: true)
+  end
+
+  def request_sent(user)
+    return true if current_user.pending_requests.where("sent_to_id = ?", user.id).exists?
+  end
+
+  def waiting_for_response(user)
+    return true if current_user.recieved_requests.where("sent_by_id = ?", user.id).exists?
+  end
+
   def is_friend?(user_id)
-    return true if Friendship.where("sent_by_id = ? AND sent_to_id = ?", current_user.id, user_id).present?
+    return true if Friendship.where("sent_by_id = ? AND sent_to_id = ? AND status = ?", current_user.id, user_id, true).present?
   end
 end

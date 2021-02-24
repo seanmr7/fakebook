@@ -37,7 +37,7 @@ class FriendshipsController < ApplicationController
   end
 
   def delete
-    @friendship = Friendship.find_by(sent_to_id: params[:user_id], sent_by_id: current_user.id, status: false)
+    @friendship = Friendship.find_by(sent_to_id: params[:user_id], sent_by_id: current_user.id, status: true)
     if @friendship.destroy
       flash[:success] = "Friend destroyed!"
       redirect_to root_path

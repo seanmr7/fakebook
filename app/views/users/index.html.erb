@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 ps-5">
+      <h5><%= current_user.full_name %></h5>
+    </div>
+    <div class="col-md-8 ps-5 pe-5">
+      <h3>People!</h3>
+      <% @users.each do |user| %>
+        <% next if user == current_user %>
+
+        <div class="d-flex flex-row align-items-center card mb-4 pt-3 pb-3 ps-2 ">
+          <%= image_tag("default/default-profile-png", size: "50x50", class: "rounded-circle")%>
+          <h5 class="w-75"><%= user.full_name %></h5>
+          <% if is_friend?(user.id) %>
+            Your Friend
+          <% elsif current_user.pending_requests.where("sent_to_id = ?", user.id).exists? %>
+            Pending Friend
+          <% elsif waiting_for_response(user) %>
+            <%= link_to accept_friend_user_friendships_path(user_id: request) do %>
+              <%= button_tag 'Accept', type: 'button', class: 'btn btn-success' %>
+            <% end %>
+            <%= link_to decline_friend_user_friendships_path(user_id: request) do %>
+              <%= button_tag 'Decline', type: 'button', class: 'btn btn-danger' %>
+            <% end %>
+          <% else %>
+            <%= link_to user_friendships_path(user_id: user.id), method: :post do %>
+              <%= button_tag 'Add Friend', type: 'button', class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
