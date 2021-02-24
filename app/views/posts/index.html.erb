@@ -1,27 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 ps-5">
+      <h3><%= current_user.full_name %></h3>
+    </div>
+    <div class="col-md-8 ps-5 pe-5">
+      <h3>NEWS FEED</h3>
+      <%= render partial: "form", object: @new_post, as: :post %>
+      <% @posts.each do |post| %>
+        <div class="card mb-3 ps-2 pe-2">
+          <p class="mt-1 mb-0 post-text"><b><%= post.user.full_name %></b></p>
+          <span class="post-date-text"><%= post.created_at.strftime("%D") %></span>
+          <p class=" mt-2 post-text"><%= post.content %></p>
+          <span class="post-text"><i class="fa fa-thumbs-o-up"> Likes: 10</i></span>
+          <span class="pt-2 pb-2 like-comment-wrapper">
+            <div class="row m-0">
+              <%= link_to "Like", '/', class: "col-md-6 rounded" %>
+              <%= link_to 'Comment', new_comment_path(post_id: post.id, user_id: current_user.id), class: "col-md-6 rounded" %>
+            </div>
+          </span>
+          <div class="comment-wrapper">
+            <% post.comments.each do |comment| %>
+              <div class="comment">
+                <b><%= comment.user.full_name %></b><br>
+                <%= comment.comment %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <h3>Notifications</h3>
+      <h5>Friend Requests</h5>
+      <% current_user.recieved_requests.each do |request| %>
+        <span><%= request.full_name %></span>
+        <%= link_to 'Accept', accept_friend_user_friendships_path(user_id: request), class: 'btn btn-success' %>
+        <%= link_to 'Decline', decline_friend_user_friendships_path(user_id: request), class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>
