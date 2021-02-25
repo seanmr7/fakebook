@@ -30,6 +30,17 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-bell"><%= current_user.notifications.count %></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <% current_user.notifications.each do |notification| %>
+                    <% next if notification.read_at.nil? %>
+                    <li class="dropdown-item"><%= notification.action %></li>
+                  <% end %>
+                </ul>
+              </li>
               <li class="nav-item">
                 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>

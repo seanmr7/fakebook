@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
 
       # Create notifications for sent_to user
-      Notification.create(recipient: params[:user_id], actor: current_user, action: "#{current_user.full_name} wants to be friends", notifiable: @friendship)
+      Notification.create(recipient: User.find(params[:user_id]), actor: current_user, action: "#{current_user.full_name} wants to be friends", notifiable: @friendship)
 
       flash[:success] = "New request sent!"
     else
