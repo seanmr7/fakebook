@@ -7,7 +7,11 @@
     <span class="post-text"><i class="fa fa-thumbs-o-up"> <%= post.likes.count %></i></span>
     <span class="pt-2 pb-2 like-comment-wrapper">
       <div class="row m-0">
-        <%= link_to "Like", likes_path(post_id: post.id), method: :post, class: "col-md-6 rounded" %>
+        <% if has_been_liked?(post) %>
+          <%= link_to "UnLike", like_path(id: find_like(post).id, post_id: post.id, user_id: current_user.id), method: :delete, class: "col-md-6 rounded" %>
+        <% else %>
+          <%= link_to "Like", likes_path(post_id: post.id), method: :post, class: "col-md-6 rounded" %>
+        <% end %>
         <%= link_to 'Comment', new_comment_path(post_id: post.id, user_id: current_user.id), class: "col-md-6 rounded" %>
       </div>
     </span>

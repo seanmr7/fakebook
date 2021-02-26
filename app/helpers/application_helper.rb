@@ -35,4 +35,20 @@ module ApplicationHelper
   def is_friend?(user_id)
     return true if Friendship.where("sent_by_id = ? AND sent_to_id = ? AND status = ?", current_user.id, user_id, true).present?
   end
+
+  def has_been_liked?(post)
+    return false if post.likes.empty?
+
+    post.likes.each do |like|
+      if like.user_id == current_user.id
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def find_like(post)
+    like = Like.find_by(post_id: post.id, user_id: current_user.id)
+  end
 end
