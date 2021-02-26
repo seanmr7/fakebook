@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :posts, except: [:show, :edit, :update]
   resources :comments, except: [:show, :edit, :update, :index]
+  resources :likes, only: [:create, :destroy]
 end

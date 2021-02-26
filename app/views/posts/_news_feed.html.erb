@@ -4,10 +4,10 @@
     <p class="mt-1 mb-0 post-text"><b><%= post.user.full_name %></b></p>
     <span class="post-date-text"><%= post.created_at.strftime("%D") %></span>
     <p class=" mt-2 post-text"><%= post.content %></p>
-    <span class="post-text"><i class="fa fa-thumbs-o-up"> Likes: 10</i></span>
+    <span class="post-text"><i class="fa fa-thumbs-o-up"> <%= post.likes.count %></i></span>
     <span class="pt-2 pb-2 like-comment-wrapper">
       <div class="row m-0">
-        <%= link_to "Like", '/', class: "col-md-6 rounded" %>
+        <%= link_to "Like", likes_path(post_id: post.id), method: :post, class: "col-md-6 rounded" %>
         <%= link_to 'Comment', new_comment_path(post_id: post.id, user_id: current_user.id), class: "col-md-6 rounded" %>
       </div>
     </span>
