@@ -8,7 +8,7 @@ class Like < ApplicationRecord
   def check_if_liked
     post = Post.find(self.post_id)
     post.likes.each do |like|
-      return false if like.user_id == self.user_id
+      throw(:abort) if like.user_id == self.user_id 
     end
   end
 end

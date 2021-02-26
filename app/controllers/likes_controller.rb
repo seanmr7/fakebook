@@ -11,13 +11,16 @@ class LikesController < ApplicationController
         format.html { redirect_back fallback_location: root_path, notice: "Liked!" }
         format.json { render :show, status: :created, location: @like }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_back fallback_location: root_path }
         format.json { render json: @like.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
+    @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    return unless @like
+
     @like.destroy
     redirect_back fallback_location: root_path
   end
