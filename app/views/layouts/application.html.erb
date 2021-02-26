@@ -36,8 +36,11 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <% current_user.notifications.each do |notification| %>
-                    <% next if notification.read_at.nil? %>
-                    <li class="dropdown-item"><%= notification.action %></li>
+                    <li class="dropdown-item">
+                      <%= link_to notification.actor do %>
+                        <%= "#{notification.actor.full_name}#{notification.action}" %>
+                      <% end %>
+                    </li>
                   <% end %>
                 </ul>
               </li>

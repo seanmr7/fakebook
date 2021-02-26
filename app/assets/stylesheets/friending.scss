@@ -2,4 +2,8 @@
 
 a.btn.btn-primary {
   color: white;
+
+  &:visited {
+    color: white;
+  }
 }
