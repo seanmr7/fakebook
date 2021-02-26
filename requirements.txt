@@ -5,7 +5,7 @@ Done > User sign-in should use the Devise gem. Devise gives you all sorts of hel
   (which uses Rails 3) for a step-by-step introduction. The docs will be fully current.
 Done > Users can send Friend Requests to other Users.
 Done > A User must accept the Friend Request to become friends.
-> The Friend Request shows up in the notifications section of a User’s navbar.
+Done > The Friend Request shows up in the notifications section of a User’s navbar.
 Done > Users can create Posts (text only to start).
 > Users can Like Posts.
 Done > Users can Comment on Posts.

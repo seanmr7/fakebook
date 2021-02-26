@@ -15,29 +15,7 @@
       <% if current_user.id == @user.id %>
         <%= render partial: "posts/form", object: @new_post, as: :post %>
       <% end %>
-      <% @user.posts.each do |post| %>
-        <% next if post.id.nil? %>
-        <div class="card mb-3 ps-2 pe-2">
-          <p class="mt-1 mb-0 post-text"><b><%= @user.full_name %></b></p>
-          <span class="post-date-text"><%= post.created_at.strftime("%D") %></span>
-          <p class=" mt-2 post-text"><%= post.content %></p>
-          <span class="post-text"><i class="fa fa-thumbs-o-up"> Likes: 10</i></span>
-          <span class="pt-2 pb-2 like-comment-wrapper">
-            <div class="row m-0">
-              <%= link_to "Like", '/', class: "col-md-6 rounded" %>
-              <%= link_to 'Comment', new_comment_path(post_id: post.id, user_id: current_user.id), class: "col-md-6 rounded" %>
-            </div>
-          </span>
-          <div class="comment-wrapper">
-            <% post.comments.each do |comment| %>
-              <div class="comment">
-                <b><%= comment.user.full_name %></b><br>
-                <%= comment.comment %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "posts/news_feed", object: @user.posts, as: :posts %>
     </div>
     <div class="col-md-2">
       <% if current_user == @user %>
