@@ -19,13 +19,9 @@
     </div>
     <div class="col-md-2">
       <% if current_user == @user %>
-        <h3>Notifications</h3>
-        <h5>Friend Requests</h5>
-        <% @user.recieved_requests.each do |request| %>
-          <%= link_to request.full_name, request %>
-          <%= link_to 'Accept', accept_friend_user_friendships_path(user_id: request), class: 'btn btn-success' %>
-          <%= link_to 'Decline', decline_friend_user_friendships_path(user_id: request), class: 'btn btn-danger' %>
-        <% end %>
+        <%= render partial: "notification_sidebar" %>
+      <% else %>
+        Ads
       <% end %>
     </div>
   </div>

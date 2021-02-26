@@ -9,13 +9,7 @@
       <%= render partial: "news_feed", object: @posts, as: :posts%>
     </div>
     <div class="col-md-2">
-      <h3>Notifications</h3>
-      <h5>Friend Requests</h5>
-      <% current_user.recieved_requests.each do |request| %>
-        <span><%= link_to request.full_name, request %></span>
-        <%= link_to 'Accept', accept_friend_user_friendships_path(user_id: request), class: 'btn btn-success' %>
-        <%= link_to 'Decline', decline_friend_user_friendships_path(user_id: request), class: 'btn btn-danger' %>
-      <% end %>
+      <%= render partial: "users/notification_sidebar" %>
     </div>
   </div>
 </div>
