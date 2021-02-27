@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2 ps-5">
-      <h3><%= current_user.full_name %></h3>
+    <div class="col-md-2 text-center">
+      <%= render partial: "profiles/profile_sidebar", locals: { user: @user, friends: @user.friends } %>
     </div>
     <div class="col-md-8 ps-5 pe-5">
       <h3>NEWS FEED</h3>

@@ -51,4 +51,8 @@ module ApplicationHelper
   def find_like(post)
     like = Like.find_by(post_id: post.id, user_id: current_user.id)
   end
+
+  def profile_image?(user)
+    return true if user.profile.nil? || !user.profile.avatar.attached?
+  end
 end

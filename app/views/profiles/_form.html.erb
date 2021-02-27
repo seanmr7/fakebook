@@ -1,0 +1,10 @@
+<%= form_for @profile, url: user_profile_path do |f| %>
+  <div class="field mb-3">
+    <%= f.label :avatar, "Profile Picture", class: "form-label" %>
+    <%= f.file_field :avatar, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.submit "Update Profile", class: "btn btn-primary" %>
+  <div>
+<% end %>

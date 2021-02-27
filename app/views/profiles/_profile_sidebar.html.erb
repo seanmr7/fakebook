@@ -1,0 +1,26 @@
+<% if user.profile.nil? || !user.profile.avatar.attached? %>
+  <%= image_tag("default/default-profile.png", size: "150x150") %><br>
+  <% if current_user == user %>
+    <%= link_to "Upload profile picture", new_user_profile_path(user_id: user.id) %>
+  <% end %>
+<% else user.profile.avatar.attached? %>
+  <%= image_tag(url_for(user.profile.avatar), size: "150x150") %>
+<% end %>
+
+<h3 class="mt-3"><%= link_to user.full_name, user, class: "user_sidebar_anchor" %></h3>
+
+<% unless current_user.id == @user.id || is_friend?(@user.id) %>
+  <%= link_to "Add Friend", user_friendships_path(user_id: @user.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+
+<h5 class="mt-5">These are your Friends</h5>
+<% friends.each do |friend| %>
+  <div class="mt-3 d-flex flex-row justify-content-start align-items-center">
+    <% if friend.profile.nil? || !friend.profile.avatar.attached? %>
+      <%= image_tag("default/default-profile.png", size: "50x50", class: "rounded-circle me-3 ms-3")%>
+    <% else %>
+      <%= image_tag(url_for(friend.profile.avatar), size: "50x50", class: "rounded-circle me-3 ms-3") %>
+    <% end %>
+    <%= link_to friend.full_name, friend, class: "user_sidebar_anchor" %>
+  </div>
+<% end %>
