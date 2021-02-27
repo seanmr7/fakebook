@@ -37,6 +37,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Devise gem for user authentication
 gem 'devise'
 
+# Use Omniauth to allow users to login with Facebook account
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Use Figaro gem for env variables
 gem 'figaro'
 
