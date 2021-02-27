@@ -40,6 +40,8 @@ gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 # Use Omniauth to allow users to login with Facebook account
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 # Use Figaro gem for env variables
 gem 'figaro'
