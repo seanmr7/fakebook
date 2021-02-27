@@ -16,7 +16,7 @@
           <% end %>
           <h5 class="w-75"><%= user.full_name %></h5>
           <% if is_friend?(user.id) %>
-            Your Friend
+            <h5>Your Friend</h5>
           <% elsif current_user.pending_requests.where("sent_to_id = ?", user.id).exists? %>
             <span class="btn btn-secondary">Pending Friend</span>
           <% elsif waiting_for_response(user) %>
