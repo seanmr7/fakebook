@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Devise gem for user authentication
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 
 # Use Omniauth to allow users to login with Facebook account
 gem 'omniauth'
