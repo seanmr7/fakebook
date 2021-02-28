@@ -1,5 +1,15 @@
-<h1>New Comment</h1>
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class="col-md-10">
+      <div class="card card-body bg-light">
+        <h1>New Comment</h1>
+        <h5 class="mb-3">You're replying to:</h5>
+        <p><%= @post.content %></p>
+        <p>Posted by: <%= @post.user.full_name %>
+        <%= render 'form', comment: @comment %>
 
-<%= render 'form', comment: @comment %>
-
-<%= link_to 'Back', comments_path %>
+        <%= link_to 'Back', root_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 1469c81ba95c93bf5644ef5a74b71d88f4051593
+  branch: master
+  specs:
+    faker (2.16.0)
+      i18n (>= 1.6, < 2)
+
+GIT
   remote: https://github.com/heartcombo/devise.git
   revision: e16d60d0fedc5f5e6f541b2b9e901a2d53f8ceda
   branch: ca-omniauth-2
@@ -294,6 +302,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise!
+  faker!
   figaro
   font-awesome-rails
   guard

@@ -14,12 +14,12 @@
   <%= form.hidden_field :post_id, value: params[:post_id].to_i %>
   <%= form.hidden_field :user_id, value: params[:user_id].to_i %>
   
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, cols: 50, rows: 5 %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field mb-3">
+    <%= form.submit "Comment", class: "btn btn-primary" %>
   </div>
 <% end %>

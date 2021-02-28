@@ -9,7 +9,7 @@
 
 <h3 class="mt-3"><%= link_to user.full_name, user, class: "user_sidebar_anchor" %></h3>
 
-<% unless current_user.id == @user.id || is_friend?(@user.id) %>
+<% unless current_user.id == user.id || is_friend?(user.id) %>
   <%= link_to "Add Friend", user_friendships_path(user_id: @user.id), method: :post, class: 'btn btn-primary' %>
 <% end %>
 

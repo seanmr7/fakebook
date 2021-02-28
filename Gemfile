@@ -55,6 +55,9 @@ gem 'jquery-rails'
 # Use font-awesome icons
 gem 'font-awesome-rails'
 
+# Use Faker gem for seeding database
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
