@@ -42,10 +42,9 @@ module ApplicationHelper
     post.likes.each do |like|
       if like.user_id == current_user.id
         return true
-      else
-        return false
       end
     end
+    return false
   end
 
   def find_like(post)
