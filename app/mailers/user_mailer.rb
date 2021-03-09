@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@hidden-fortress-73284.herokuapp.com/.com'
+  default from: 'notifications@hidden-fortress-73284.herokuapp.com'
 
   def welcome_email(resource)
     @user = resource
