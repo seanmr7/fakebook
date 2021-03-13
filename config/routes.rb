@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   root to: "pages#home"
+  get '/privacy', to: 'pages#privacy'
+  get '/settings', to: 'pages#settings'
   resources :users, only: %i[index show] do
     resource :profile, except: %i[destroy show]
     resources :friendships, only: %i[create] do

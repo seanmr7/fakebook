@@ -5,4 +5,10 @@ class PagesController < ApplicationController
       redirect_to posts_path
     end
   end
+
+  def privacy
+  end
+
+  def settings
+  end
 end

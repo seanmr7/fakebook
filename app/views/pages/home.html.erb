@@ -68,7 +68,8 @@
             <%= f.submit "Sign up", class: "btn btn-success col-md-2 col-form-label text-center" %>
           </div>
         <% end %>
-      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, method: :post %>
+      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, method: :post %><br>
+      <%= link_to "Privacy Policy", privacy_path %>
       </div>
   <% end %>
   </div>
