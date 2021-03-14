@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    UserMailer.welcome_email(resource).deliver unless resource.invalid?
+    # Disabling welcome emails while waiting to resolve an issue with Mailgun email service
+    #UserMailer.welcome_email(resource).deliver unless resource.invalid?
   end
 end
